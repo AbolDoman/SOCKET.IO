@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/bootstrap-rtl.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>ورود به چت</title>
+</head>
+
+<body class="rtl text-center">
+    <form id="nicknameForm" class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">
+            لطفاً نام کاربری خود را وارد کنید
+        </h1>
+        <label for="nicknameInput" class="sr-only">نام کاربری</label>
+        <input type="text" name="nickname" id="nicknameInput" class="form-control" placeholder="نام کاربری" required autofocus />
+
+        <label class="mt-2" for="chatrooms">انتخاب چت روم</label>
+        <br />
+        <select name="chatrooms" id="chatrooms">
+                <optgroup>
+                    <option value="room1">چت روم شماره 1</option>
+                    <option value="room2">چت روم شماره 2</option>
+                    <option value="room3">چت روم شماره 3</option>
+                </optgroup>
+            </select>
+
+        <button class="mt-3 btn-lg btn-primary btn-block" type="submit">
+                ورود به چت
+            </button>
+    </form>
+    <script>
+        const nicknameForm = document.getElementById("nicknameForm"),
+            nicknameInput = document.getElementById("nicknameInput"),
+            chatrooms = document.getElementById("chatrooms");
+
+        nicknameForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (nicknameInput.value) {
+                localStorage.setItem("nickname", nicknameInput.value);
+                localStorage.setItem("room", chatrooms.value);
+                window.location.replace("/chat.html");
+            }
+        });
+    </script>
+</body>
+
+</html>
